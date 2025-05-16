@@ -8,7 +8,7 @@ package com.mycompany.analiseedeteccaodefraudes;
  *
  * @author Guilh
  */
-public class AnaliseeDeteccaoDeFraudes {
+public class Principal {
 
     public static void main(String[] args) {
         
