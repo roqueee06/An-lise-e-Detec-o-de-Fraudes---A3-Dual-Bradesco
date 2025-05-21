@@ -1,2 +1,5 @@
-# An-lise-e-Detec-o-de-Fraudes---A3-Dual-Bradesco
-Repositório do projeto em Java para análise de golpes financeiros, focado em fraudes de cartão clonado, desenvolvido para a disciplina de Estruturas de Dados em parceria com o Bradesco.
+# Análise e Detecção de Fraudes - A3 Dual Bradesco 🚀
+
+## 📌 Descrição
+
+Este repositório possui um projeto de análise e detecção de *fraudes* em compras na modalidade de *cartão de crédito*, o projeto é desenvolvido na linguagem *Java*, utilizando banco de dados relacional em *MySQL* e utilizando um banco de dados sintético do [Kaggle](https://www.kaggle.com/datasets/smmmmmmmmmmmm/financial-fraud-detection).
