@@ -6,12 +6,12 @@ Este repositório possui um projeto de análise e detecção de *fraudes* em com
 
 ## 🎯 Objetivo
 
-Desenvolver uma aplicação que analise transações financeiras para identificar **padrões de fraude (cartão clonado)**, utilizando (nao esquecer de editar) para manipulação dos dados e **JFreeChart** para visualização gráfica.
+Desenvolver uma aplicação que analise transações financeiras para identificar **padrões de fraudes (cartões clonados)**, utilizando **Árvore Binária de Busca** para manipulação dos dados e **JFreeChart** para visualização gráfica.
 
 ## 📊 Funcionalidades
 
-- Carregar transações financeiras de um banco de dados MySQL.
-- Manipular os dados utilizando alguma estrutura de dados
+- Carregar transações financeiras de um banco de dados **MySQL**.
+- Manipular os dados utilizando estrutura de **Árvore Binária de Busca**.
 - Detectar fraudes de cartão clonado com base em:
   - Transações em **locais diferentes** em um **curto período**.
   - **Valores suspeitos** em horários incomuns.
