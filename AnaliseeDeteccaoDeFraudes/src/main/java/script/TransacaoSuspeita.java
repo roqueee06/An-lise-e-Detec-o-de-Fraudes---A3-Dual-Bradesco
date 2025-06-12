@@ -1,6 +1,6 @@
 package script;
 
-public class TransacaoSuspeita {
+public class TransacaoSuspeita implements Comparable<TransacaoSuspeita> {
     private int idTransacaoOriginal;
     private float distanciaDeCasa;
     private float distanciaUltimaTransacao;
@@ -10,7 +10,6 @@ public class TransacaoSuspeita {
     private boolean usouPin;
     private boolean pedidoOnline;
     private boolean fraude;
-    
 
     public TransacaoSuspeita(Transacao transacao, boolean fraude) {
         this.idTransacaoOriginal = transacao.getId();
@@ -24,7 +23,6 @@ public class TransacaoSuspeita {
         this.fraude = fraude;
     }
 
-    // Getters
     public int getIdTransacaoOriginal() {
         return idTransacaoOriginal;
     }
@@ -59,5 +57,11 @@ public class TransacaoSuspeita {
 
     public boolean isFraude() {
         return fraude;
+    }
+
+    @Override
+    public int compareTo(TransacaoSuspeita outra) {
+        // ordena pelo id original da base do inicio
+        return Float.compare(outra.idTransacaoOriginal, this.idTransacaoOriginal);
     }
 }
