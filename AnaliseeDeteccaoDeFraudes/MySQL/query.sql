@@ -6,11 +6,11 @@ CREATE TABLE transacoes (
     distancia_de_casa FLOAT,
     distancia_da_ultima_transacao FLOAT,
     razao_preco_medio_compra FLOAT,
-    repetiu_estabelecimento boolean,
-    usou_chip boolean,
-    usou_pin boolean,
-    pedido_online boolean,
-    fraude boolean
+    repetiu_estabelecimento BOOLEAN,
+    usou_chip BOOLEAN,
+    usou_pin BOOLEAN,
+    pedido_online BOOLEAN,
+    fraude BOOLEAN
 );
 
 CREATE TABLE suspeitas (
@@ -19,9 +19,12 @@ CREATE TABLE suspeitas (
     distancia_de_casa FLOAT,
     distancia_da_ultima_transacao FLOAT,
     razao_preco_medio_compra FLOAT,
-    repetiu_estabelecimento boolean,
-    usou_chip boolean,
-    usou_pin boolean,
-    pedido_online boolean,
-    suspeita_detectada boolean
+    repetiu_estabelecimento BOOLEAN,
+    usou_chip BOOLEAN,
+    usou_pin BOOLEAN,
+    pedido_online BOOLEAN,
+    suspeita_detectada BOOLEAN,
+    tipo_de_fraude VARCHAR(50),
+    condicao VARCHAR(50),
+    modo_pagamento VARCHAR(50)
 );
