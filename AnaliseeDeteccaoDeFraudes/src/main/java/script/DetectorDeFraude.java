@@ -1,53 +1,67 @@
 package script;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 public class DetectorDeFraude {
-    
-    public List<TransacaoSuspeita> detectarSuspeitas(List<Transacao> transacoes) {
-        Collections.sort(transacoes);
 
-        List<TransacaoSuspeita> suspeitas = new ArrayList<>();
-        
+    public ListaSimples<TransacaoSuspeita> detectarSuspeitas(ListaSimples<Transacao> transacoes) {
+
+        ListaSimples<TransacaoSuspeita> suspeitas = new ListaSimples<>();
+
         float limiteRazaoPreco = 4.0f;
         float limiteDistanciaCasa = 100.0f;
         float limiteUltimaTrans = 30.0f;
         float limitePrecoExtremo = 20.0f;
 
-        for (Transacao t : transacoes) {
+        for (int i = 0; i < transacoes.tamanho(); i++) {
+            Transacao t = transacoes.get(i);
+
             boolean eFraude = false;
+            String tipoFraude = "";
+            String condicao = "";
+            String modoPagamento = "";
             
-            // detecção de fraudes
+            if (t.isPedidoOnline()) {
+                modoPagamento = "Compra Online";     
+            } else {
+                modoPagamento = "Compra Presencial";          
+            }
+
             if (!t.isUsouPin() && t.isPedidoOnline()) {
                 int condicoesAdicionaisSuspeitas = 0;
                 if (t.getRazaoPrecoMedioCompra() > limiteRazaoPreco) {
                     condicoesAdicionaisSuspeitas++;
+                    condicao = "Preço Incomum";
                 }
                 if (t.getDistanciaDeCasa() > limiteDistanciaCasa) {
                     condicoesAdicionaisSuspeitas++;
+                    condicao = "Distância da Casa";
                 }
                 if (t.getDistanciaUltimaTransacao() > limiteUltimaTrans) {
                     condicoesAdicionaisSuspeitas++;
+                    condicao = "Distância da Última Compra";
                 }
                 if (!t.isUsouChip()) {
                     condicoesAdicionaisSuspeitas++;
-                }             
+                }
                 if (condicoesAdicionaisSuspeitas >= 2) {
                     eFraude = true;
+                    tipoFraude = "Compra Online";
                 }
-            } else if (t.getRazaoPrecoMedioCompra() > limitePrecoExtremo) {
+            } 
+            else if (t.getRazaoPrecoMedioCompra() > limitePrecoExtremo) {
                 eFraude = true;
-            } else if (t.getDistanciaDeCasa() > 1000.0f) {
+                tipoFraude = "Preço Incomum";
+            } 
+            else if (t.getDistanciaDeCasa() > 1000.0f) {
                 eFraude = true;
-            } else if (t.getDistanciaUltimaTransacao() > 500.0f) {
+                tipoFraude = "Distância da Casa";
+            } 
+            else if (t.getDistanciaUltimaTransacao() > 500.0f) {
                 eFraude = true;
+                tipoFraude = "Distância da Última Compra";
             }
-            
-            // adiciona as suspeitas a uma lista
+
             if (eFraude) {
-                suspeitas.add(new TransacaoSuspeita(t, true));
+                suspeitas.adicionar(new TransacaoSuspeita(t, true, tipoFraude, condicao, modoPagamento));
             }
         }
 

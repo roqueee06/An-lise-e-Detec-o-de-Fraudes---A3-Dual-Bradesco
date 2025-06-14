@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
-public class Transacao implements Comparable<Transacao>{
+public class Transacao{
     private int id;
     private float distanciaDeCasa;
     private float distanciaUltimaTransacao;
@@ -78,9 +78,4 @@ public class Transacao implements Comparable<Transacao>{
         return fraude;
     } 
     
-    // ordem
-    @Override
-    public int compareTo(Transacao outra) {
-        return Integer.compare(this.id, outra.id);
-    }
 }

@@ -1,6 +1,6 @@
 package script;
 
-public class TransacaoSuspeita implements Comparable<TransacaoSuspeita> {
+public class TransacaoSuspeita {
     private int idTransacaoOriginal;
     private float distanciaDeCasa;
     private float distanciaUltimaTransacao;
@@ -10,8 +10,11 @@ public class TransacaoSuspeita implements Comparable<TransacaoSuspeita> {
     private boolean usouPin;
     private boolean pedidoOnline;
     private boolean fraude;
-
-    public TransacaoSuspeita(Transacao transacao, boolean fraude) {
+    private String tipoFraude;
+    private String condicao;
+    private String modoPagamento;
+    
+    public TransacaoSuspeita(Transacao transacao, boolean fraude, String tipoFraude, String condicao, String modoPagamento) {
         this.idTransacaoOriginal = transacao.getId();
         this.distanciaDeCasa = transacao.getDistanciaDeCasa();
         this.distanciaUltimaTransacao = transacao.getDistanciaUltimaTransacao();
@@ -21,6 +24,9 @@ public class TransacaoSuspeita implements Comparable<TransacaoSuspeita> {
         this.usouPin = transacao.isUsouPin();
         this.pedidoOnline = transacao.isPedidoOnline();
         this.fraude = fraude;
+        this.tipoFraude = tipoFraude;
+        this.condicao = condicao;
+        this.modoPagamento = modoPagamento;
     }
 
     public int getIdTransacaoOriginal() {
@@ -59,9 +65,16 @@ public class TransacaoSuspeita implements Comparable<TransacaoSuspeita> {
         return fraude;
     }
 
-    @Override
-    public int compareTo(TransacaoSuspeita outra) {
-        // ordena pelo id original da base do inicio
-        return Float.compare(outra.idTransacaoOriginal, this.idTransacaoOriginal);
+    public String getTipoFraude() {
+        return tipoFraude;
     }
+
+    public String getCondicao() {
+        return condicao;
+    } 
+
+    public String getModoPagamento() {
+        return modoPagamento;
+    }
+    
 }
